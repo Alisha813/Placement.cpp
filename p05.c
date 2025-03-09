@@ -1,4 +1,9 @@
-//WAP to input a string and print that string in upper case, lower case, reverse case, sentence case and toggle case
+//Write a C program that takes a password as input and checks if it meets the following criteria:
+At least 8 characters long
+Contains at least one uppercase letter
+Contains at least one lowercase letter
+Contains at least one digit
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
