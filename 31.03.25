@@ -1,0 +1,115 @@
+Create a class Employee using C++ or Java having data members as empid, name, mobile and basic.
+Create a constructor to initialize data in all data members.
+Create setters for name, mobile and basic.
+Create getters for all members.
+Create private non-static methods getDA() that returns Dearness Allowance as 90% of basic, getHRA() that return House Rent Allowance as 65% of basic and getPF() that returns Providence Fund of 12%
+Create a public non-static function getSalary() that returns the salary of the employee as basic+da+hra-pf
+Create a static method calcSalary() that takes basic of an employee and prints the tentative salary of an employee based on percentage of DA, HRA and PF given above. Show the output as 
+Tentative salary for basic <basic> is <salary>
+
+Create an entry point to input data of an employee and create an object of Employee class with that data. Show the salary of the person in following format
+Salary of <name> with employee id <empid> is <salary>.
+
+Input basic as input and show the tentative salary of an employee for given basic in following format. Show the tentative salary for the given basic.
+
+
+#include <iostream>
+using namespace std;
+
+class Employee {
+private:
+    int empid;
+    string name;
+    string mobile;
+    double basic;
+
+    double getDA() {
+        return 0.90 * basic;
+    }
+
+    double getHRA() {
+        return 0.65 * basic;
+    }
+
+    double getPF() {
+        return 0.12 * basic;
+    }
+
+public:
+    Employee(int empid, string name, string mobile, double basic) {
+        this->empid = empid;
+        this->name = name;
+        this->mobile = mobile;
+        this->basic = basic;
+    }
+
+    void setName(string name) {
+        this->name = name;
+    }
+
+    void setMobile(string mobile) {
+        this->mobile = mobile;
+    }
+
+    void setBasic(double basic) {
+        this->basic = basic;
+    }
+
+    int getEmpid() {
+        return empid;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    string getMobile() {
+        return mobile;
+    }
+
+    double getBasic() {
+        return basic;
+    }
+
+    double getSalary() {
+        return basic + getDA() + getHRA() - getPF();
+    }
+
+    static void calcSalary(double basic) {
+        double da = 0.90 * basic;
+        double hra = 0.65 * basic;
+        double pf = 0.12 * basic;
+        double salary = basic + da + hra - pf;
+        cout << "Tentative salary for basic " << basic << " is " << salary << endl;
+    }
+};
+
+int main() {
+    int empid;
+    string name, mobile;
+    double basic;
+
+    cout << "Enter Employee ID: ";
+    cin >> empid;
+    cin.ignore(); 
+
+    cout << "Enter Name: ";
+    getline(cin, name);
+
+    cout << "Enter Mobile: ";
+    getline(cin, mobile);
+
+    cout << "Enter Basic Salary: ";
+    cin >> basic;
+
+    Employee emp(empid, name, mobile, basic);
+    cout << "Salary of " << emp.getName() << " with employee id " << emp.getEmpid() << " is " << emp.getSalary() << endl;
+
+    cout << "Enter Basic Salary to calculate tentative salary: ";
+    double tentativeBasic;
+    cin >> tentativeBasic;
+    Employee::calcSalary(tentativeBasic);
+
+    return 0;
+}
+
